@@ -19,7 +19,7 @@ const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: string; classN
         }
       },
       { 
-        threshold: 0.1,
+        threshold: 0.15,
         rootMargin: '0px 0px -50px 0px' 
       }
     );
@@ -34,7 +34,7 @@ const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: string; classN
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.3,1)] transform ${
+      className={`${className} transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.3,1)] transform will-change-transform ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
       style={{ transitionDelay: delay }}
@@ -46,22 +46,22 @@ const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: string; classN
 
 const Steps: React.FC = () => {
   return (
-    <section id="how-it-works" className="w-full max-w-5xl px-4 md:px-6 py-20 z-10 flex flex-col items-center">
-      <ScrollReveal className="w-full text-center mb-12">
-        <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-6">From Thought to Action</h2>
+    <section id="how-it-works" className="w-full max-w-5xl px-4 md:px-6 py-16 z-10 flex flex-col items-center">
+      <ScrollReveal className="w-full mb-10">
+        <h2 className="text-3xl md:text-4xl text-slate-900 mb-8 text-center">From Thought to Action</h2>
         
-        <div className="max-w-2xl mx-auto">
-          <h3 className="text-xl md:text-2xl text-slate-900 font-medium mb-3">Execution in 3 steps</h3>
-          <p className="text-slate-500 text-base leading-relaxed">
-            The easiest way to get things done without lifting a finger. HyperOS handles the complexity.
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 md:gap-12 border-t border-slate-200 pt-8">
+          <h3 className="text-xl md:text-2xl text-slate-900 font-medium shrink-0">Execution in 3 steps</h3>
+          <p className="text-slate-500 text-base leading-relaxed max-w-lg text-center md:text-left">
+            The easiest way to get things done without lifting a finger. HyperOS handles the complexity while you focus on the outcome.
           </p>
         </div>
       </ScrollReveal>
       
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 relative items-start">
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative items-start">
         
         {/* Step 1: Command */}
-        <ScrollReveal delay="200ms" className="relative group">
+        <ScrollReveal delay="100ms" className="relative group">
           {/* Card Visual */}
           <div className="bg-white rounded-[20px] shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-200/60 p-2.5 aspect-[4/3] flex flex-col transition-transform hover:scale-[1.02] duration-500">
             <div className="h-full w-full bg-slate-50/50 rounded-xl border border-slate-100 p-5 md:p-6 flex flex-col relative overflow-hidden">
@@ -88,7 +88,7 @@ const Steps: React.FC = () => {
           {/* Text Content */}
           <div className="mt-6 text-center px-2">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="font-serif text-slate-300 text-xl font-bold">1</span>
+              <span className="text-slate-300 text-xl font-bold">1</span>
               <h4 className="text-lg font-bold text-slate-900">Command</h4>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto">
@@ -97,7 +97,7 @@ const Steps: React.FC = () => {
           </div>
 
           {/* Desktop Arrow 1 -> 2 */}
-          <div className="hidden lg:block absolute -right-6 top-[35%] w-8 opacity-30 z-10">
+          <div className="hidden md:block absolute -right-6 top-[35%] w-8 opacity-30 z-10">
             <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" className="w-full text-slate-400">
               <path d="M0,20 C30,20 40,20 95,20" strokeWidth="4" markerEnd="url(#arrowhead)" strokeDasharray="8 8" />
             </svg>
@@ -105,7 +105,7 @@ const Steps: React.FC = () => {
         </ScrollReveal>
 
         {/* Step 2: Interpret */}
-        <ScrollReveal delay="400ms" className="relative group">
+        <ScrollReveal delay="300ms" className="relative group">
           {/* Card Visual - Dark */}
           <div className="bg-slate-800 rounded-[20px] shadow-[0_25px_50px_-12px_rgba(30,41,59,0.3)] border border-slate-700 p-2.5 aspect-[4/3] flex flex-col transition-transform hover:scale-[1.02] duration-500">
             <div className="h-full w-full bg-slate-900 rounded-xl border border-slate-800 p-5 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
@@ -130,7 +130,7 @@ const Steps: React.FC = () => {
           {/* Text Content */}
           <div className="mt-6 text-center px-2">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="font-serif text-slate-300 text-xl font-bold">2</span>
+              <span className="text-slate-300 text-xl font-bold">2</span>
               <h4 className="text-lg font-bold text-slate-900">Interpret</h4>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto">
@@ -139,7 +139,7 @@ const Steps: React.FC = () => {
           </div>
 
           {/* Desktop Arrow 2 -> 3 */}
-          <div className="hidden lg:block absolute -right-6 top-[35%] w-8 opacity-30 z-10">
+          <div className="hidden md:block absolute -right-6 top-[35%] w-8 opacity-30 z-10">
             <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" className="w-full text-slate-400">
               <path d="M0,20 C30,20 40,20 95,20" strokeWidth="4" markerEnd="url(#arrowhead)" strokeDasharray="8 8" />
             </svg>
@@ -147,7 +147,7 @@ const Steps: React.FC = () => {
         </ScrollReveal>
 
         {/* Step 3: Execute */}
-        <ScrollReveal delay="600ms" className="relative group">
+        <ScrollReveal delay="500ms" className="relative group">
           {/* Card Visual */}
           <div className="bg-white rounded-[20px] shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-200/60 p-2.5 aspect-[4/3] flex flex-col transition-transform hover:scale-[1.02] duration-500">
             <div className="h-full w-full bg-slate-50/50 rounded-xl border border-slate-100 p-5 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
@@ -172,7 +172,7 @@ const Steps: React.FC = () => {
           {/* Text Content */}
           <div className="mt-6 text-center px-2">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="font-serif text-slate-300 text-xl font-bold">3</span>
+              <span className="text-slate-300 text-xl font-bold">3</span>
               <h4 className="text-lg font-bold text-slate-900">Execute</h4>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto">

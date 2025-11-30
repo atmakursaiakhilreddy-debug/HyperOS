@@ -14,9 +14,9 @@ export interface Step {
 }
 
 export interface WaitlistFormData {
+  name: string;
+  contactNumber: string;
   email: string;
-  name?: string;
-  role?: string;
 }
 
 export interface WaitlistResponse {

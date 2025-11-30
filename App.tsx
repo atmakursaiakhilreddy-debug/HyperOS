@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Instagram, Mail, Linkedin } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -36,9 +37,51 @@ const App: React.FC = () => {
           <Steps />
         </main>
 
-        <footer className="w-full max-w-7xl mx-auto px-6 py-12 mt-20 border-t border-slate-200/50 flex justify-center items-center opacity-0 animate-fade-in-up delay-700">
+        <footer className="w-full max-w-7xl mx-auto px-6 py-8 mt-10 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center opacity-0 animate-fade-in-up delay-700 gap-6">
           <div className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-default">
             <span className="font-sans text-lg text-slate-900 tracking-wide font-medium">HyperOS</span>
+          </div>
+          
+          <div className="flex items-center gap-6">
+            <a 
+              href="https://www.instagram.com/hyperos.offical/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-all duration-300 text-slate-600 hover:text-slate-900"
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+
+            <a 
+              href="https://x.com/HyperOs_offical" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-all duration-300 text-slate-600 hover:text-slate-900"
+              aria-label="Follow us on X"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+
+            <a 
+              href="https://linkedin.com/company/hyperosoffical" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-all duration-300 text-slate-600 hover:text-slate-900"
+              aria-label="Follow us on LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+
+            <a 
+              href="mailto:HyperOS.Offical@gmail.com" 
+              className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-all duration-300 text-slate-600 hover:text-slate-900"
+              aria-label="Email us"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
           </div>
         </footer>
       </div>

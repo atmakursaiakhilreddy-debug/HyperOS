@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Loader2, Check } from 'lucide-react';
+import { X, Loader2, Check, ExternalLink } from 'lucide-react';
 import GlassCard from './ui/GlassCard';
 import { submitToWaitlist } from '../services/waitlist';
 
@@ -9,17 +9,28 @@ interface WaitlistModalProps {
 }
 
 const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    contactNumber: '',
+    email: ''
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   if (!isOpen) return null;
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await submitToWaitlist({ email });
+      await submitToWaitlist(formData);
       setIsSuccess(true);
     } catch (error) {
       console.error(error);
@@ -48,27 +59,54 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
         {!isSuccess ? (
           <>
             <div className="text-center mb-8">
-              <h2 className="font-serif text-3xl text-slate-900 mb-2">Join the Future</h2>
-              <p className="text-slate-500 text-sm">Be the first to experience the OS designed for AI.</p>
+              <h2 className="text-3xl text-slate-900 mb-2 font-normal font-sans">Join the Future</h2>
+              <p className="text-slate-500 text-sm font-sans">Be the first to experience the OS designed for AI.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 font-sans">
               <div>
-                <label htmlFor="email" className="block text-xs font-medium text-slate-500 mb-1 ml-1">Email Address</label>
+                <label htmlFor="name" className="block text-xs font-medium text-slate-500 mb-1 ml-1">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="contactNumber" className="block text-xs font-medium text-slate-500 mb-1 ml-1">Contact Number</label>
+                <input
+                  type="tel"
+                  id="contactNumber"
+                  required
+                  value={formData.contactNumber}
+                  onChange={handleChange}
+                  placeholder="+1 (555) 000-0000"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-xs font-medium text-slate-500 mb-1 ml-1">Gmail Address</label>
                 <input
                   type="email"
                   id="email"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="name@gmail.com"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
                 />
               </div>
+
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-slate-900 text-white font-semibold rounded-xl py-3 mt-2 hover:bg-indigo-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
+                className="w-full bg-slate-900 text-white font-semibold rounded-xl py-3 mt-4 hover:bg-indigo-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
               >
                 {isLoading ? (
                   <>
@@ -80,20 +118,31 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                 )}
               </button>
             </form>
-            <p className="mt-6 text-center text-[10px] text-slate-400">
-              By joining, you agree to our Terms of Service and Privacy Policy.
+            <p className="mt-6 text-center text-[10px] text-slate-400 font-sans">
+              By joining, you agree to our Terms of Service.
             </p>
           </>
         ) : (
-          <div className="text-center py-8">
+          <div className="text-center py-6 font-sans">
             <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 text-green-500 border border-green-100">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="font-serif text-2xl text-slate-900 mb-2">You're on the list!</h3>
-            <p className="text-slate-500 text-sm mb-8">We'll notify you as soon as a spot opens up.</p>
+            <h3 className="text-2xl text-slate-900 mb-2 font-medium">You're on the list!</h3>
+            <p className="text-slate-500 text-sm mb-8">Join our Discord community to get the latest updates.</p>
+            
+            <a
+              href="https://discordapp.com/user/1444383112787398790"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#5865F2] text-white font-semibold rounded-xl py-3 mb-4 hover:bg-[#4752C4] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#5865F2]/20"
+            >
+              Join Discord
+              <ExternalLink className="w-4 h-4" />
+            </a>
+
             <button
               onClick={onClose}
-              className="px-6 py-2 rounded-full border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 transition-all text-sm"
+              className="px-6 py-2 rounded-full text-slate-400 hover:text-slate-600 transition-all text-xs font-medium"
             >
               Close
             </button>

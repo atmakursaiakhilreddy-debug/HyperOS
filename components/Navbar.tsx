@@ -10,21 +10,21 @@ const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${scrolled ? 'pt-0' : 'pt-6'}`}>
+    <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${scrolled ? 'pt-0' : 'pt-4'}`}>
       <nav 
         className={`
           flex items-center justify-between px-6 
           transition-all duration-500 ease-in-out
           ${scrolled 
-            ? 'w-full rounded-none py-4 liquid-glass-high border-x-0 border-t-0 shadow-sm' 
-            : 'w-[90%] max-w-4xl rounded-full py-3 liquid-glass'
+            ? 'w-full rounded-none py-3 liquid-glass-high border-x-0 border-t-0 shadow-sm' 
+            : 'w-[90%] max-w-4xl rounded-full py-2.5 liquid-glass'
           }
         `}
       >

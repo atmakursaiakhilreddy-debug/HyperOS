@@ -8,40 +8,26 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onJoinClick }) => {
   return (
-    <div className="relative pt-32 pb-20 sm:pt-40 sm:pb-32 flex flex-col items-center justify-center">
+    <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-20 flex flex-col items-center justify-center">
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20">
         
         <Reveal>
-          {/* H1 Title - Updated to Geist Sans Medium */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium text-slate-900 tracking-tight font-sans mb-6 drop-shadow-sm leading-[1.1] md:leading-[1]">
-            HyperOS - The Natural Language Command Line for Your Computer.
+          {/* H1 Title - Removed 'HyperOS -' prefix, enforced sans-serif */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium text-slate-900 tracking-tight font-sans mb-4 drop-shadow-sm leading-[1.1] md:leading-[1]">
+            Say Anything and Get it done
           </h1>
           
           {/* Subtext */}
-          <p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-600 font-sans font-medium leading-relaxed">
+          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-slate-600 font-sans font-medium leading-relaxed">
             Run your entire OS and apps through natural language — no clicking, no scripts, just execution.
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Join Waitlist Only */}
-            <button 
-              onClick={onJoinClick}
-              className="px-8 py-3.5 rounded-lg bg-white/80 border border-white/60 text-slate-800 font-semibold hover:bg-white hover:scale-105 transition-all shadow-lg shadow-blue-900/5 backdrop-blur-md min-w-[200px]"
-            >
-              Join Waitlist
-            </button>
-          </div>
-          <p className="mt-4 text-xs text-slate-500 font-medium">
-             v0.9 Beta available for Windows. macOS & Linux coming soon.
           </p>
         </Reveal>
 
         {/* Complex Mockup - Bigger & Multi-App */}
-        <div className="mt-24 relative w-full max-w-[90rem] mx-auto perspective-[2000px]">
+        <div className="mt-10 relative w-full max-w-[80rem] mx-auto perspective-[2000px]">
            <Reveal width="100%">
-             <div className="relative transform-style-3d rotate-x-2 scale-105 md:scale-110 origin-top">
+             <div className="relative transform-style-3d rotate-x-2 scale-100 md:scale-105 origin-top">
                 
                 {/* Main "Monitor" Container */}
                 <div className="relative rounded-[24px] bg-slate-900/80 backdrop-blur-md p-2 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] ring-1 ring-white/20">
