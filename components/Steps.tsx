@@ -1,18 +1,67 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import GlassCard from './ui/GlassCard';
 import { MessageSquare, Cpu, CheckCircle2 } from 'lucide-react';
+
+// Reusable component for scroll-triggered animations
+const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: string; className?: string }> = ({ 
+  children, 
+  delay = '0ms', 
+  className = '' 
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' 
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`${className} transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.3,1)] transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+      style={{ transitionDelay: delay }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Steps: React.FC = () => {
   return (
     <section id="how-it-works" className="w-full max-w-6xl px-6 py-24 z-10 flex flex-col items-center">
-      <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-20 text-center opacity-0 animate-fade-in-up">From Thought to Action</h2>
+      <ScrollReveal className="w-full text-center">
+        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-20">From Thought to Action</h2>
+      </ScrollReveal>
       
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 relative">
         {/* Connecting Line (Desktop) */}
-        <div className="hidden md:block absolute top-12 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent z-0 opacity-0 animate-fade-in-up delay-200"></div>
+        <div className="hidden md:block absolute top-12 left-0 w-full h-px z-0">
+          <ScrollReveal delay="200ms" className="w-full h-full">
+            <div className="w-full h-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+          </ScrollReveal>
+        </div>
 
         {/* Step 1 */}
-        <div className="relative z-10 flex flex-col items-center text-center opacity-0 animate-fade-in-up delay-300">
+        <ScrollReveal delay="300ms" className="relative z-10 flex flex-col items-center text-center">
           <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-8 shadow-xl shadow-indigo-100 border border-slate-100">
             <MessageSquare className="w-8 h-8 text-indigo-500" />
             <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center font-serif text-white font-bold shadow-lg">1</div>
@@ -26,10 +75,10 @@ const Steps: React.FC = () => {
               <p className="text-sm text-white/90">"Sort my downloads folder by date"</p>
             </GlassCard>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Step 2 */}
-        <div className="relative z-10 flex flex-col items-center text-center opacity-0 animate-fade-in-up delay-400">
+        <ScrollReveal delay="500ms" className="relative z-10 flex flex-col items-center text-center">
           <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-8 shadow-xl shadow-purple-100 border border-slate-100">
             <Cpu className="w-8 h-8 text-purple-500" />
             <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center font-serif text-white font-bold shadow-lg">2</div>
@@ -53,10 +102,10 @@ const Steps: React.FC = () => {
               </div>
             </GlassCard>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Step 3 */}
-        <div className="relative z-10 flex flex-col items-center text-center opacity-0 animate-fade-in-up delay-500">
+        <ScrollReveal delay="700ms" className="relative z-10 flex flex-col items-center text-center">
           <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-8 shadow-xl shadow-emerald-100 border border-slate-100">
             <CheckCircle2 className="w-8 h-8 text-emerald-500" />
             <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center font-serif text-white font-bold shadow-lg">3</div>
@@ -70,7 +119,7 @@ const Steps: React.FC = () => {
               <p className="text-sm text-white/80">Sorted 142 files in /Downloads</p>
             </GlassCard>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>
