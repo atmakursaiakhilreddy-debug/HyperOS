@@ -31,8 +31,8 @@ const Features: React.FC = () => {
   return (
     <section id="features" className="w-full max-w-7xl px-6 py-24 z-10">
       <div className="mb-16 text-center opacity-0 animate-fade-in-up">
-        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-6">Your OS, Reimagined.</h2>
-        <p className="text-slate-500 max-w-xl mx-auto text-lg">HyperOS sits above your operating system, providing a unified intelligence layer that controls your applications.</p>
+        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-6 font-normal">Your OS, Reimagined.</h2>
+        <p className="text-slate-500 max-w-xl mx-auto text-lg font-medium">HyperOS sits above your operating system, providing a unified intelligence layer that controls your applications.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
@@ -49,13 +49,13 @@ const Features: React.FC = () => {
               <div className="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/30">
                 <Command className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-serif text-3xl text-slate-900 mb-4">Natural Language Control</h3>
-              <p className="text-slate-600 text-lg max-w-md leading-relaxed">
+              <h3 className="font-serif text-3xl text-slate-900 mb-4 font-normal">Natural Language Control</h3>
+              <p className="text-slate-600 text-lg max-w-md leading-relaxed font-medium">
                 The command line was powerful but cryptic. The GUI was intuitive but slow. HyperOS combines the power of terminal with the ease of conversation.
               </p>
             </div>
             
-            <div className="relative z-10 flex items-center gap-2 text-indigo-600 mt-6 group-hover:text-indigo-700 transition-colors cursor-pointer font-medium">
+            <div className="relative z-10 flex items-center gap-2 text-indigo-600 mt-6 group-hover:text-indigo-700 transition-colors cursor-pointer font-semibold">
               <span>See demonstrations</span>
               <ArrowUpRight className="w-4 h-4" />
             </div>
@@ -70,8 +70,8 @@ const Features: React.FC = () => {
                 <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center mb-6 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-all">
                   <feature.icon className="w-5 h-5 text-slate-600 group-hover:text-indigo-600" />
                 </div>
-                <h3 className="font-serif text-2xl text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
+                <h3 className="font-serif text-2xl text-slate-900 mb-3 font-normal">{feature.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed font-medium">{feature.description}</p>
               </div>
             </GlassCard>
           </div>

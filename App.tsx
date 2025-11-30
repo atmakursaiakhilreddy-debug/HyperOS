@@ -17,7 +17,7 @@ const App: React.FC = () => {
   const closeWaitlist = () => setIsWaitlistOpen(false);
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden selection:bg-indigo-500/30">
+    <div className="relative min-h-screen w-full overflow-x-hidden selection:bg-indigo-500/30 font-sans font-medium">
       
       {/* Dynamic Background - Light Mode */}
       <div className="fixed inset-0 z-0 bg-white">
@@ -38,7 +38,7 @@ const App: React.FC = () => {
 
         <footer className="w-full max-w-7xl mx-auto px-6 py-12 mt-20 border-t border-slate-200/50 flex justify-center items-center opacity-0 animate-fade-in-up delay-700">
           <div className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-default">
-            <span className="font-serif italic text-lg text-slate-900 tracking-wide">HyperOS</span>
+            <span className="font-sans text-lg text-slate-900 tracking-wide font-medium">HyperOS</span>
           </div>
         </footer>
       </div>

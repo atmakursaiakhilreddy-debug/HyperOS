@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
         `}
       >
         <div className="flex items-center">
-          <span className="font-serif text-xl font-medium tracking-tight text-slate-900 flex items-center gap-1">
+          <span className="font-sans text-xl font-medium tracking-tight text-slate-900 flex items-center gap-1">
             Hyper 
             <Navigation className="w-3.5 h-3.5 text-slate-900 fill-transparent stroke-[2.5px]" /> 
             OS

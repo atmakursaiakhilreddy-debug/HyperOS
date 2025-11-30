@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import GlassCard from './ui/GlassCard';
-import { MessageSquare, Cpu, CheckCircle2 } from 'lucide-react';
+import { Check, Play, Pause, X, MousePointer2 } from 'lucide-react';
 
 // Reusable component for scroll-triggered animations
 const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: string; className?: string }> = ({ 
@@ -47,79 +46,149 @@ const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: string; classN
 
 const Steps: React.FC = () => {
   return (
-    <section id="how-it-works" className="w-full max-w-6xl px-6 py-24 z-10 flex flex-col items-center">
-      <ScrollReveal className="w-full text-center">
-        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-20">From Thought to Action</h2>
+    <section id="how-it-works" className="w-full max-w-5xl px-4 md:px-6 py-20 z-10 flex flex-col items-center">
+      <ScrollReveal className="w-full text-center mb-12">
+        <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-6">From Thought to Action</h2>
+        
+        <div className="max-w-2xl mx-auto">
+          <h3 className="text-xl md:text-2xl text-slate-900 font-medium mb-3">Execution in 3 steps</h3>
+          <p className="text-slate-500 text-base leading-relaxed">
+            The easiest way to get things done without lifting a finger. HyperOS handles the complexity.
+          </p>
+        </div>
       </ScrollReveal>
       
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-        {/* Connecting Line (Desktop) */}
-        <div className="hidden md:block absolute top-12 left-0 w-full h-px z-0">
-          <ScrollReveal delay="200ms" className="w-full h-full">
-            <div className="w-full h-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-          </ScrollReveal>
-        </div>
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 relative items-start">
+        
+        {/* Step 1: Command */}
+        <ScrollReveal delay="200ms" className="relative group">
+          {/* Card Visual */}
+          <div className="bg-white rounded-[20px] shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-200/60 p-2.5 aspect-[4/3] flex flex-col transition-transform hover:scale-[1.02] duration-500">
+            <div className="h-full w-full bg-slate-50/50 rounded-xl border border-slate-100 p-5 md:p-6 flex flex-col relative overflow-hidden">
+              {/* Header */}
+              <div className="flex items-center gap-2 mb-6 md:mb-8">
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
+                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">START HYPEROS</span>
+              </div>
+              
+              {/* Input Bubble */}
+              <div className="bg-indigo-50/80 rounded-lg rounded-tl-sm p-3 md:p-4 border border-indigo-100/50 shadow-sm relative z-10 max-w-[95%]">
+                <p className="text-indigo-600 font-medium text-xs md:text-sm leading-relaxed">
+                  "Organize my downloads folder by date"
+                </p>
+              </div>
 
-        {/* Step 1 */}
-        <ScrollReveal delay="300ms" className="relative z-10 flex flex-col items-center text-center">
-          <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-8 shadow-xl shadow-indigo-100 border border-slate-100">
-            <MessageSquare className="w-8 h-8 text-indigo-500" />
-            <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center font-serif text-white font-bold shadow-lg">1</div>
+              {/* Mouse Cursor */}
+              <div className="absolute bottom-6 right-6 text-slate-900 drop-shadow-xl animate-float">
+                <MousePointer2 className="w-5 h-5 md:w-6 md:h-6 fill-slate-900 stroke-white stroke-[1.5px]" />
+              </div>
+            </div>
           </div>
-          <h3 className="text-xl text-slate-900 font-medium mb-3">Command</h3>
-          <p className="text-sm text-slate-500 px-4">Use your voice or text to state your intent naturally.</p>
-          
-          <div className="mt-8 w-full">
-            <GlassCard className="p-4 !rounded-xl !bg-slate-900 text-left shadow-lg">
-              <p className="text-xs text-indigo-300 font-mono mb-2">$ input</p>
-              <p className="text-sm text-white/90">"Sort my downloads folder by date"</p>
-            </GlassCard>
+
+          {/* Text Content */}
+          <div className="mt-6 text-center px-2">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="font-serif text-slate-300 text-xl font-bold">1</span>
+              <h4 className="text-lg font-bold text-slate-900">Command</h4>
+            </div>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto">
+              Simply click Start or use the hotkey. Speak or type your intent naturally.
+            </p>
+          </div>
+
+          {/* Desktop Arrow 1 -> 2 */}
+          <div className="hidden lg:block absolute -right-6 top-[35%] w-8 opacity-30 z-10">
+            <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" className="w-full text-slate-400">
+              <path d="M0,20 C30,20 40,20 95,20" strokeWidth="4" markerEnd="url(#arrowhead)" strokeDasharray="8 8" />
+            </svg>
           </div>
         </ScrollReveal>
 
-        {/* Step 2 */}
-        <ScrollReveal delay="500ms" className="relative z-10 flex flex-col items-center text-center">
-          <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-8 shadow-xl shadow-purple-100 border border-slate-100">
-            <Cpu className="w-8 h-8 text-purple-500" />
-            <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center font-serif text-white font-bold shadow-lg">2</div>
+        {/* Step 2: Interpret */}
+        <ScrollReveal delay="400ms" className="relative group">
+          {/* Card Visual - Dark */}
+          <div className="bg-slate-800 rounded-[20px] shadow-[0_25px_50px_-12px_rgba(30,41,59,0.3)] border border-slate-700 p-2.5 aspect-[4/3] flex flex-col transition-transform hover:scale-[1.02] duration-500">
+            <div className="h-full w-full bg-slate-900 rounded-xl border border-slate-800 p-5 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
+              
+              {/* Abstract UI Elements */}
+              <div className="absolute top-4 left-4 w-24 h-16 bg-slate-800/50 rounded-lg border border-white/5"></div>
+              <div className="absolute bottom-4 right-4 w-32 h-20 bg-blue-900/20 rounded-lg border border-white/5"></div>
+              
+              {/* Processing Pill */}
+              <div className="relative z-10 bg-slate-950/90 backdrop-blur-md border border-slate-700/50 rounded-full px-4 py-2 flex items-center gap-3 shadow-xl">
+                <span className="text-[10px] font-semibold text-slate-200 tracking-wide whitespace-nowrap">Processing (Files)</span>
+                <div className="h-3 w-px bg-slate-800"></div>
+                <div className="flex gap-2.5 text-slate-400">
+                  <Play size={8} fill="currentColor" className="hover:text-white transition-colors cursor-pointer" />
+                  <Pause size={8} fill="currentColor" className="hover:text-white transition-colors cursor-pointer" />
+                  <X size={10} className="hover:text-white transition-colors cursor-pointer" />
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 className="text-xl text-slate-900 font-medium mb-3">Interpret</h3>
-          <p className="text-sm text-slate-500 px-4">Agent analyzes intent and maps it to system capabilities.</p>
 
-          <div className="mt-8 w-full">
-             <GlassCard className="p-4 !rounded-xl !bg-slate-900 text-left space-y-2 shadow-lg">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400"></div>
-                <div className="h-1.5 w-2/3 bg-white/10 rounded-full"></div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400"></div>
-                <div className="h-1.5 w-1/2 bg-white/10 rounded-full"></div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400"></div>
-                <div className="h-1.5 w-3/4 bg-white/10 rounded-full"></div>
-              </div>
-            </GlassCard>
+          {/* Text Content */}
+          <div className="mt-6 text-center px-2">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="font-serif text-slate-300 text-xl font-bold">2</span>
+              <h4 className="text-lg font-bold text-slate-900">Interpret</h4>
+            </div>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto">
+              HyperOS analyzes your screen context and files to understand the task.
+            </p>
+          </div>
+
+          {/* Desktop Arrow 2 -> 3 */}
+          <div className="hidden lg:block absolute -right-6 top-[35%] w-8 opacity-30 z-10">
+            <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" className="w-full text-slate-400">
+              <path d="M0,20 C30,20 40,20 95,20" strokeWidth="4" markerEnd="url(#arrowhead)" strokeDasharray="8 8" />
+            </svg>
           </div>
         </ScrollReveal>
 
-        {/* Step 3 */}
-        <ScrollReveal delay="700ms" className="relative z-10 flex flex-col items-center text-center">
-          <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-8 shadow-xl shadow-emerald-100 border border-slate-100">
-            <CheckCircle2 className="w-8 h-8 text-emerald-500" />
-            <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center font-serif text-white font-bold shadow-lg">3</div>
+        {/* Step 3: Execute */}
+        <ScrollReveal delay="600ms" className="relative group">
+          {/* Card Visual */}
+          <div className="bg-white rounded-[20px] shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-200/60 p-2.5 aspect-[4/3] flex flex-col transition-transform hover:scale-[1.02] duration-500">
+            <div className="h-full w-full bg-slate-50/50 rounded-xl border border-slate-100 p-5 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
+              
+              {/* Skeleton Lines */}
+              <div className="w-full space-y-2.5 mb-8 opacity-40 px-3">
+                <div className="h-1.5 bg-slate-200 rounded-full w-full"></div>
+                <div className="h-1.5 bg-slate-200 rounded-full w-3/4"></div>
+                <div className="h-1.5 bg-slate-200 rounded-full w-1/2"></div>
+              </div>
+              
+              {/* Success Toast */}
+              <div className="w-full bg-green-50/80 backdrop-blur-sm border border-green-100/80 rounded-lg p-2.5 flex items-center justify-center gap-2.5 shadow-sm transform translate-y-2">
+                <div className="w-4 h-4 rounded-full border-[1.5px] border-green-500 flex items-center justify-center shrink-0">
+                  <Check size={10} className="text-green-500 stroke-[3px]" />
+                </div>
+                <span className="text-[10px] md:text-xs font-semibold text-green-700">Task Completed</span>
+              </div>
+            </div>
           </div>
-          <h3 className="text-xl text-slate-900 font-medium mb-3">Execute</h3>
-          <p className="text-sm text-slate-500 px-4">HyperOS performs the actions across multiple apps instantly.</p>
 
-          <div className="mt-8 w-full">
-             <GlassCard className="p-4 !rounded-xl !bg-slate-900 text-left border-l-2 !border-l-emerald-500 shadow-lg">
-              <p className="text-xs text-emerald-400 font-mono mb-1">SUCCESS</p>
-              <p className="text-sm text-white/80">Sorted 142 files in /Downloads</p>
-            </GlassCard>
+          {/* Text Content */}
+          <div className="mt-6 text-center px-2">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="font-serif text-slate-300 text-xl font-bold">3</span>
+              <h4 className="text-lg font-bold text-slate-900">Execute</h4>
+            </div>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto">
+              The agent performs actions autonomously. You get the result instantly.
+            </p>
           </div>
         </ScrollReveal>
+
+        {/* SVG Defs for Arrows */}
+        <svg className="absolute w-0 h-0">
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+            </marker>
+          </defs>
+        </svg>
 
       </div>
     </section>

@@ -14,7 +14,7 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Geist', 'Inter', 'sans-serif'],
               serif: ['EB Garamond', 'serif'],
             },
             colors: {
@@ -22,12 +22,13 @@
                 100: 'rgba(255, 255, 255, 0.4)',
                 200: 'rgba(255, 255, 255, 0.6)',
                 300: 'rgba(255, 255, 255, 0.8)',
-                border: 'rgba(0, 0, 0, 0.06)',
+                border: 'rgba(255, 255, 255, 0.8)',
               }
             },
             animation: {
               blob: "blob 10s infinite",
               float: "float 6s ease-in-out infinite",
+              "float-slow": "float 8s ease-in-out infinite",
               "fade-in-up": "fadeInUp 1.2s cubic-bezier(0.25, 1, 0.3, 1) forwards",
               "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
@@ -45,6 +46,9 @@
               fadeInUp: {
                 "0%": { opacity: "0", transform: "translateY(40px) scale(0.98)" },
                 "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+              },
+              dash: {
+                "to": { strokeDashoffset: "-20" }
               }
             },
             backgroundImage: {
@@ -60,18 +64,18 @@
         color: #0f172a;
       }
       .liquid-glass {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
       }
       .liquid-glass-high {
         background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-        border: 1px solid rgba(255, 255, 255, 1);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
       }
       /* Custom scrollbar */
       ::-webkit-scrollbar {
