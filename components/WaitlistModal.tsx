@@ -131,7 +131,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
             <p className="text-slate-500 text-sm mb-8">Join our Discord community to get the latest updates.</p>
             
             <a
-              href="https://discordapp.com/user/1444383112787398790"
+              href="https://discord.gg/CuqwwBttNP"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-[#5865F2] text-white font-semibold rounded-xl py-3 mb-4 hover:bg-[#4752C4] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#5865F2]/20"
